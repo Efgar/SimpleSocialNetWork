@@ -1,5 +1,5 @@
 # Simple Social Network
-Simple application to be developed as arecruitment test.
+Simple application to be developed as a recruitment test.
 
 ## Description
 

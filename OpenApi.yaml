@@ -1,0 +1,246 @@
+openapi: 3.0.0
+servers:
+  - description: Localhost deploy
+    url: http://localhost:8080/simplesocialnetwork/v1.0
+info:
+  description: Simple application to be developed as a recruitment test.
+  version: "1.0.0"
+  title: Simple Social Network API
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /user:
+    get:
+      tags:
+        - user
+      summary: searches inventory
+      operationId: searchInventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      parameters:
+        - in: query
+          name: searchString
+          description: pass an optional search string for looking up inventory
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: skip
+          description: number of records to skip for pagination
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '400':
+          description: bad input parameter
+    post:
+      tags:
+        - user
+      summary: adds an inventory item
+      operationId: addInventory
+      description: Adds an item to the system
+      responses:
+        '201':
+          description: item created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: an existing item already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        description: Inventory item to add
+  /user/{userHandle}/post/:
+    parameters:
+    - name: userHandle
+      in: path
+      description: user whose posts you are going to handle
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+        - posts
+      summary: Add a post on behalf of the specified user with the given text
+      operationId: addPost
+      description: Add a post on behalf of the specified user with the given text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post'
+      responses:
+        '200':
+          description: Added post object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+        '400':
+          description: Invalid user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+        '404':
+          description: Unexistant user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+    get:
+      tags:
+        - posts
+      parameters:
+        - name: reverseOrder
+          in: query
+          description: false to retrieve the posts in chronological order, true to retrieve them in inverse chronological order, defaults to true
+          required: false
+          schema:
+            type: boolean
+            default: true
+      summary: Recover posts from the specified user
+      operationId: getPostsForUser
+      description: Recover posts from the specified user
+      responses:
+        '200':
+          description: List containing the posts, sorted according what is specified
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/post'
+        '400':
+          description: Invalid user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+        '404':
+          description: Unexistant user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+  /user/{userHandle}/post/{uniqueId}:
+    parameters:
+      - name: userHandle
+        in: path
+        description: user whose posts you are going to handle
+        required: true
+        schema:
+          type: string
+      - name: uniqueId
+        in: path
+        description: id of the post to be modified
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+        - posts
+      summary: Delete a specified post given its unique Id
+      operationId: deletePost
+      description: Delete a specified post given its unique Id
+      responses:
+        '204':
+          description: Process ended without errors
+        '400':
+          description: Invalid user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+        '404':
+          description: Unexistant user handle or post id sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+    get:
+      tags:
+        - posts
+      summary: Retrieves a post given a specified ID
+      operationId: getPost
+      description: Retrieves a post given a specified ID
+      responses:
+        '200':
+          description: Process ended without errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+        '400':
+          description: Invalid user handle sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+        '404':
+          description: Unexistant user handle or post id sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apierror'
+components:
+  schemas:
+    user:
+      type: object
+      required:
+        - handle
+      properties:
+        handle:
+          type: string
+          example: MyUser
+        displayName:
+          type: string
+          example: My User
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/post'
+        followings:
+          type: array
+          items:
+            $ref: '#/components/schemas/user'
+        followers:
+          type: array
+          items:
+            $ref: '#/components/schemas/user'
+    post:
+      required:
+        - content
+      properties:
+        content:
+          type: string
+          example: My new post
+        creationDate:
+          type: string
+          format: date
+        uniqueID:
+          type: string
+          format: uuid
+          example: 408-867-5309
+    apierror:
+      properties:
+        errorMessage:
+          type: string
+          example: "NoSuchElementException: User not found for the given handle"
+        errorCause:
+          type: string
+          example: "NoSuchElementException: User not found for the given handle"
+        errorStack:
+          type: string
+          example: "java.util.NoSuchElementException: User not found for the given handle\r\n\tat com.efgh.model.Network.getUser(Network.java:57)\r\n\tat com.efgh.service.PostService.getPostsByUserHandle(PostService.java:29)\r\n\tat com.efgh.controller.PostController.getPostsForUser(PostController.java:36)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:498)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)"

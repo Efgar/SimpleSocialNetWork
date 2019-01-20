@@ -11,25 +11,39 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/v1.0/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public User addUser(User user) {
         return userService.addUser(user);
     }
 
-    @RequestMapping(value = "/{userHandle}", method = RequestMethod.PUT)
-    public User updateUser(User user) {
-        return userService.updateUser(user);
-    }
-
+    /**
+     *
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUsers() {
         return userService.getAllUsers();
+    }
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/{userHandle}", method = RequestMethod.PUT)
+    public User updateUser(User user) {
+        return userService.updateUser(user);
     }
 
     @RequestMapping(value = "/{userHandle}", method = RequestMethod.GET)
@@ -47,11 +61,6 @@ public class UserController {
         return userService.getFollowedUsers(userHandle);
     }
 
-    @RequestMapping(value = "/{userHandle}/followers", method = RequestMethod.GET)
-    public Set<User> getFollowers(@PathVariable(value = "userHandle") String userHandle) {
-        return userService.getFollowers(userHandle);
-    }
-
     @RequestMapping(value = "/{userHandle}/followed", method = RequestMethod.POST)
     public User addFollowedUser(@PathVariable(value = "userHandle") String userHandle, @RequestBody User followedUser) {
         return userService.addFollowedUser(userHandle, followedUser);
@@ -61,5 +70,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT )
     public void removeFollowedUser(@PathVariable(value = "userHandle") String userHandle, @PathVariable(value = "followedUserHandle") String followedUserHandle) {
         userService.removeFollowedUser(userHandle, followedUserHandle);
+    }
+
+    @RequestMapping(value = "/{userHandle}/followers", method = RequestMethod.GET)
+    public Set<User> getFollowers(@PathVariable(value = "userHandle") String userHandle) {
+        return userService.getFollowers(userHandle);
     }
 }

@@ -21,12 +21,12 @@ public class PostController {
     }
 
     @RequestMapping(value = "/{uniqueId}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT )
     public void deletePost(@PathVariable(value="userHandle") String userHandle, @PathVariable(value="uniqueId") String uniqueId){
         postService.deletePostById(userHandle, uniqueId);
     }
 
     @RequestMapping(value = "/{uniqueId}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.NO_CONTENT )
     public Post getPost(@PathVariable(value="userHandle") String userHandle, @PathVariable(value="uniqueId") String uniqueId){
         return postService.getPostById(userHandle, uniqueId);
     }

@@ -41,6 +41,12 @@ Implementation done using the following stack:
 
 This project use [project Lombok](https://projectlombok.org/), please use the required plugin in your IDE
 
+## Documentation
+API documentation is writen using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject) in the [OpenApi.yaml](OpenApi.yaml) file.
+
+A deployed version of the documentation can be found [here](https://app.swaggerhub.com/apis-docs/e311/SimpleSocialNetWork/1.0.0), however, have in mind that given crossdomain constraints you will not be able to use the "try now" feature.
+
+
 ## Running the application
 
 TBD

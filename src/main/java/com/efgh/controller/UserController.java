@@ -36,14 +36,16 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+
     /**
      *
+     * @param userHandle user handle identifying the user to be modified
      * @param user
      * @return
      */
     @RequestMapping(value = "/{userHandle}", method = RequestMethod.PUT)
-    public User updateUser(User user) {
-        return userService.updateUser(user);
+    public User updateUser(@PathVariable(value = "userHandle") String userHandle, User user) {
+        return userService.updateUser(userHandle, user);
     }
 
     @RequestMapping(value = "/{userHandle}", method = RequestMethod.GET)

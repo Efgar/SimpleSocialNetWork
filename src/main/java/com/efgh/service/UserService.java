@@ -16,8 +16,8 @@ public class UserService {
         return Network.getUser(user.getHandle());
     }
 
-    public User updateUser(User user) {
-        User userToUpdate = Network.getUser(user.getHandle());
+    public User updateUser(String userHandle, User user) {
+        User userToUpdate = Network.getUser(userHandle);
         userToUpdate.setDisplayName(user.getDisplayName());
         return userToUpdate;
     }

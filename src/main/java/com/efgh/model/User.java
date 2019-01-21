@@ -10,9 +10,11 @@ import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode
-public class User {
+@NoArgsConstructor
+public class User implements Comparable<User> {
 
     @Setter(AccessLevel.PRIVATE)
+
     private String handle;
 
     @EqualsAndHashCode.Exclude
@@ -172,5 +174,10 @@ public class User {
      */
     public void validate() {
         Assert.isTrue(StringUtils.isNotBlank(getHandle()), "Invalid argument for the user handle");
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return getHandle().compareTo(user.getHandle());
     }
 }

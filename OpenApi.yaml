@@ -442,18 +442,6 @@ components:
         displayName:
           type: string
           example: My User
-        posts:
-          type: array
-          items:
-            $ref: '#/components/schemas/post'
-        followings:
-          type: array
-          items:
-            $ref: '#/components/schemas/user'
-        followers:
-          type: array
-          items:
-            $ref: '#/components/schemas/user'
     post:
       required:
         - content

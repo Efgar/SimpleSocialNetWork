@@ -34,17 +34,17 @@ public class UserService {
     }
 
     public Set<User> getFollowedUsers(String userHandle) {
-        return Network.getUser(userHandle).getFollowers();
-    }
-
-    public Set<User> getFollowers(String userHandle) {
         return Network.getUser(userHandle).getFollowings();
     }
 
+    public Set<User> getFollowers(String userHandle) {
+        return Network.getUser(userHandle).getFollowers();
+    }
+
     public User addFollowedUser(String userHandle, User followedUser) {
-        User user = Network.getUser(userHandle);
         followedUser = Network.getUser(followedUser.getHandle());
-        Network.getUser(userHandle).follow(followedUser);
+        User user = Network.getUser(userHandle);
+        user.follow(followedUser);
         return user;
     }
 

@@ -2,6 +2,7 @@ package com.efgh.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 public class Post implements Comparable<Post> {
     private String content;
     private Date creationDate;

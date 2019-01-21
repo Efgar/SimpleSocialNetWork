@@ -32,7 +32,8 @@ public class PostController {
     }
 
     /**
-     * Recover posts from the specified user
+     * Get the compilation of all the posts made by the user.
+     *
      * @param userHandle user whose post will be retrieved
      * @param reverseOrder false to retrieve the posts in chronological order, true to retrieve
      *                     them in inverse chronological order, defaults to true

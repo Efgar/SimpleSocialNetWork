@@ -38,8 +38,21 @@ public class Network {
      */
     public static User addUser(String newUserHandle, String displayName) {
         User newUser = new User(newUserHandle, displayName);
-        users.put(newUser.hashCode(), newUser);
+        addUser(newUser);
         return newUser;
+    }
+
+    /**
+     * Creates a new user in the system.
+     *
+     * @param user user to be added to the system
+     * @return the created user
+     * @throws IllegalArgumentException if there is any inconsistency with the user object definition
+     */
+    public static User addUser(User user) {
+        user.validate();
+        users.put(user.hashCode(), user);
+        return user;
     }
 
     /**

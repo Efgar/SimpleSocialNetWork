@@ -151,4 +151,25 @@ public class User {
         Assert.isTrue(StringUtils.isNotBlank(uniqueId), "Invalid argument for the post search");
         return getPosts().stream().filter( post -> post.getUniqueID().equalsIgnoreCase(uniqueId)).findFirst().orElseThrow(() -> new NoSuchElementException("No element found for the given id"));
     }
+
+    /**
+     * Copy the values of the received object into the current one without changing the current user handle.
+     *
+     * @param user object whose values are to be copy
+     */
+    public void copy(User user) {
+        if (user == null) {
+            return;
+        }
+        setDisplayName(user.getDisplayName());
+    }
+
+    /**
+     * Validate if the current user is properly configured
+     *
+     * @throws NoSuchElementException if there is any inconsistency with the current object definition
+     */
+    public void validate() {
+        Assert.isTrue(StringUtils.isNotBlank(getHandle()), "Invalid argument for the user handle");
+    }
 }

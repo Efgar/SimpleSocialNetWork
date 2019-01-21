@@ -12,13 +12,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
     public User addUser(User user) {
-        Network.addUser(user.getHandle(), user.getDisplayName());
-        return Network.getUser(user.getHandle());
+        return Network.addUser(user);
     }
 
     public User updateUser(String userHandle, User user) {
         User userToUpdate = Network.getUser(userHandle);
-        userToUpdate.setDisplayName(user.getDisplayName());
+        userToUpdate.copy(user);
         return userToUpdate;
     }
 

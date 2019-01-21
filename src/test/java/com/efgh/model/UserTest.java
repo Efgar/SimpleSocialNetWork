@@ -264,6 +264,38 @@ public class UserTest {
         user.getPostById(null);
     }
 
+    @Test
+    public void copy() {
+        User mainUser = new User("mainUser", "Main user");
+        User userToCopy = new User("copyUser", "Copy user");
+
+        mainUser.copy(userToCopy);
+
+        Assert.assertEquals(userToCopy.getDisplayName(), mainUser.getDisplayName());
+        Assert.assertNotEquals(userToCopy.getHandle(), mainUser.getHandle());
+    }
+
+    @Test
+    public void copy_nullCopy() {
+        String usrHandle = "mainUser";
+        String usrDisplay = "Main user";
+        User mainUser = new User(usrHandle, usrDisplay);
+
+        mainUser.copy(null);
+
+        Assert.assertEquals(usrHandle, mainUser.getHandle());
+        Assert.assertEquals(usrDisplay, mainUser.getDisplayName());
+    }
+
+    @Test
+    public void validate() {
+        String usrHandle = "mainUser";
+        String usrDisplay = "Main user";
+        User mainUser = new User(usrHandle, usrDisplay);
+
+        mainUser.validate();
+    }
+
     private Post postWithDelay(User user, String postText) throws InterruptedException {
         Thread.sleep(1);
         return user.addPost(postText);

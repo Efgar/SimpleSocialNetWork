@@ -18,7 +18,7 @@ public class NetworkTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void addUser_invalidHandle() {
-        Network.addUser(null);
+        Network.addUser(null, "");
     }
 
     @Test

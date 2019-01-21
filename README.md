@@ -42,17 +42,37 @@ Implementation done using the following stack:
 This project use [project Lombok](https://projectlombok.org/), please use the required plugin in your IDE
 
 ## Documentation
-API documentation is writen using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject) in the [OpenApi.yaml](OpenApi.yaml) file.
+API documentation is made using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject) in the [OpenApi.yaml](OpenApi.yaml) file.
 
 A deployed version of the documentation can be found [here](https://app.swaggerhub.com/apis-docs/e311/SimpleSocialNetWork/1.0.0), however, have in mind that given crossdomain constraints you will not be able to use the "try now" feature.
 
+## Building the application
+
+This application is made with maven, in order to compile please run ``clean package``.
+
+If you also want to generate a docker image, run ``clean package dockerfile:build``.
 
 ## Running the application
+Next are the instructions to run the application in different ways, please note that in all cases the application will start under address 'localhost:8080' and the application root will be 'simplesocialnetwork' (i.e. [localhost:8080/simplesocialnetwork](localhost:8080/simplesocialnetwork))
+
+### Example deploy
+
+Latest stable deploy can be found in [heroku](https://efghnetwork.herokuapp.com/), this will have the latest code from master deployed at any time.
+
+### Running locally
+
+You can run the application locally by downloading the precompiled version available in the [lib](lib) folder, to do so, download the full lib folder and execute the available bat ([StartSocialNetwork.bat](lib/StartSocialNetwork.bat))
+
+### Running from your IDE
+
+This project is a Spring boot application, therefore running it in a local environment is fairly easy, to run from your IDE simply import the project as a maven project and run the main class [com.efgh.Launcher](src/main/java/com/efgh/Launcher.java)
+
+### Running using docker
 
 TBD
 
 ## Known issues
 
-* User creation will not allow to add posts or a listof "followed users" in the same call.
+* User creation will not allow to add posts or a list of "followed users" in the same call.
 * User update will only allow the update of basic information.
 

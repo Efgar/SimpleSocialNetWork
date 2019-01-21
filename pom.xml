@@ -98,7 +98,7 @@
                         <configuration>
                             <target>
                                 <copy file="target/${project.artifactId}-${project.version}.jar"
-                                      tofile="bin/${project.artifactId}.jar"/>
+                                      tofile="app/${project.artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>

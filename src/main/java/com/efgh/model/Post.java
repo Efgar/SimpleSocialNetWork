@@ -1,9 +1,7 @@
 package com.efgh.model;
 
-import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
@@ -11,7 +9,6 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
-@Setter(AccessLevel.PRIVATE)
 public class Post implements Comparable<Post> {
     private String content;
     private Date creationDate;

@@ -1,5 +1,6 @@
 package com.efgh.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
@@ -18,16 +19,16 @@ public class User {
     private String displayName;
 
     @EqualsAndHashCode.Exclude
-    @Setter(AccessLevel.PRIVATE)
+    @JsonIgnore
     private ArrayList<Post> posts = new ArrayList<>();
 
     @EqualsAndHashCode.Exclude
-    @Setter(AccessLevel.PRIVATE)
     @ToString.Exclude
+    @JsonIgnore
     private HashSet<User> followings = new HashSet<>();
 
     @EqualsAndHashCode.Exclude
-    @Setter(AccessLevel.PRIVATE)
+    @JsonIgnore
     private HashSet<User> followers = new HashSet<>();
 
     /**

@@ -1,8 +1,8 @@
-package com.efgh.service;
+package com.efgh.simplenetwork.service;
 
-import com.efgh.model.Network;
-import com.efgh.model.Post;
-import com.efgh.model.User;
+import com.efgh.simplenetwork.model.Network;
+import com.efgh.simplenetwork.model.Post;
+import com.efgh.simplenetwork.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

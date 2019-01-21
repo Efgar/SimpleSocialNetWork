@@ -1,8 +1,8 @@
-package com.efgh.controller;
+package com.efgh.simplenetwork.controller;
 
-import com.efgh.model.Post;
-import com.efgh.model.User;
-import com.efgh.service.UserService;
+import com.efgh.simplenetwork.model.Post;
+import com.efgh.simplenetwork.model.User;
+import com.efgh.simplenetwork.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

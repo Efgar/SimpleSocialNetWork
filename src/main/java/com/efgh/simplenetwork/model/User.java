@@ -1,4 +1,4 @@
-package com.efgh.model;
+package com.efgh.simplenetwork.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

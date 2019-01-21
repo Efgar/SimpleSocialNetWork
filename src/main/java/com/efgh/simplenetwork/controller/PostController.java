@@ -1,7 +1,7 @@
-package com.efgh.controller;
+package com.efgh.simplenetwork.controller;
 
-import com.efgh.model.Post;
-import com.efgh.service.PostService;
+import com.efgh.simplenetwork.model.Post;
+import com.efgh.simplenetwork.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.efgh.controller;
+package com.efgh.simplenetwork.controller;
 
 import lombok.Data;
 import org.apache.commons.lang3.exception.ExceptionUtils;

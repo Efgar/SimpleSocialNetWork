@@ -44,7 +44,7 @@ This project use [project Lombok](https://projectlombok.org/), please use the re
 ## Documentation
 API documentation is made using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject) in the [OpenApi.yaml](OpenApi.yaml) file.
 
-A deployed version of the documentation can be found [here](https://app.swaggerhub.com/apis-docs/e311/SimpleSocialNetWork/1.0.0), however, have in mind that given crossdomain constraints you will not be able to use the "try now" feature.
+A deployed version of the documentation can be found [here](https://app.swaggerhub.com/apis-docs/e311/SimpleSocialNetWork/1.0.0), however, have in mind that given crossdomain constraints you will not be able to use the "try now" feature against a localhost deploy.
 
 ## Building the application
 
@@ -65,7 +65,7 @@ You can run the application locally by downloading the precompiled version avail
 
 ### Running from your IDE
 
-This project is a Spring boot application, therefore running it in a local environment is fairly easy, to run from your IDE simply import the project as a maven project and run the main class [com.efgh.Launcher](src/main/java/com/efgh/Launcher.java)
+This project is a Spring boot application, therefore running it in a local environment is fairly easy, to run from your IDE simply import the project as a maven project and run the main class [com.efgh.simplenetwork.Launcher](src/main/java/com/efgh/simplenetwork/Launcher.java)
 
 ### Running using docker
 

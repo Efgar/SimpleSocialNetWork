@@ -1,4 +1,4 @@
-package com.efgh.model;
+package com.efgh.simplenetwork.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -51,7 +51,7 @@ A deployed version of the documentation can be found [here](https://app.swaggerh
 
 The application has a set of integration tests that can also be used as live documentation, in order to check them please see the following postman collection.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6f4787dface52d138604)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/65b1d8d4f05070188b63)
 
 ## Building the application
 

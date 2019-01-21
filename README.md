@@ -38,6 +38,7 @@ Implementation done using the following stack:
 * Spring MVC
 * No database implemented so far
 * JUnit
+* Postman
 
 This project use [project Lombok](https://projectlombok.org/), please use the required plugin in your IDE
 
@@ -45,6 +46,12 @@ This project use [project Lombok](https://projectlombok.org/), please use the re
 API documentation is made using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject) in the [OpenApi.yaml](OpenApi.yaml) file.
 
 A deployed version of the documentation can be found [here](https://app.swaggerhub.com/apis-docs/e311/SimpleSocialNetWork/1.0.0), however, have in mind that given crossdomain constraints you will not be able to use the "try now" feature against a localhost deploy.
+
+## Integration tests
+
+The application has a set of integration tests that can also be used as live documentation, in order to check them please see the following postman collection.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6f4787dface52d138604)
 
 ## Building the application
 

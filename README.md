@@ -57,8 +57,6 @@ The application has a set of integration tests that can also be used as live doc
 
 This application is made with maven, in order to compile please run ``clean package``.
 
-If you also want to generate a docker image, run ``clean package dockerfile:build``.
-
 ## Running the application
 Next are the instructions to run the application in different ways, please note that in all cases the application will start under address 'localhost:8080' and the application root will be 'simplesocialnetwork' (i.e. [localhost:8080/simplesocialnetwork](localhost:8080/simplesocialnetwork))
 
@@ -74,12 +72,14 @@ You can run the application locally by downloading the precompiled version avail
 
 This project is a Spring boot application, therefore running it in a local environment is fairly easy, to run from your IDE simply import the project as a maven project and run the main class [com.efgh.simplenetwork.Launcher](src/main/java/com/efgh/simplenetwork/Launcher.java)
 
-### Running using docker
-
-TBD
-
 ## Known issues
 
 * User creation will not allow to add posts or a list of "followed users" in the same call.
 * User update will only allow the update of basic information.
+
+## Potential for improvement
+
+* The application could be deployed in a docker container to standarize environment.
+* Some Jbejaves/Mocking tests could be added in java to further test the code base.
+* you could potentially add HATEOAS implementation to the application to ease the navigation between resources.
 

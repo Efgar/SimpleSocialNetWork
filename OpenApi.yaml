@@ -1,5 +1,9 @@
 openapi: 3.0.0
 servers:
+  - description: Heroku deploy
+    url: https://efghnetwork.herokuapp.com/simplesocialnetwork/v1.0
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/e311/SimpleSocialNetWork/1.0.0
   - description: Localhost deploy
     url: http://localhost:8080/simplesocialnetwork/v1.0
 info:
@@ -294,12 +298,12 @@ paths:
                 $ref: '#/components/schemas/apierror'
   /user/{userHandle}/post/:
     parameters:
-    - name: userHandle
-      in: path
-      description: user whose posts you are going to handle
-      required: true
-      schema:
-        type: string
+      - name: userHandle
+        in: path
+        description: user whose posts you are going to handle
+        required: true
+        schema:
+          type: string
     post:
       tags:
         - posts

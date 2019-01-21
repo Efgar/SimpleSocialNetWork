@@ -66,7 +66,7 @@ Latest stable deploy can be found in [heroku](https://efghnetwork.herokuapp.com/
 
 ### Running locally
 
-You can run the application locally by downloading the precompiled version available in the [app](app) folder, to do so, download the full lib folder and execute the available bat ([StartSocialNetwork.bat](app/StartSocialNetwork.bat))
+You can run the application locally by downloading the precompiled version available in the [app](app) folder, to do so, download the full ``app`` folder and execute the available bat ([StartSocialNetwork.bat](app/StartSocialNetwork.bat))
 
 ### Running from your IDE
 

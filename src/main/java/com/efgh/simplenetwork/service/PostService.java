@@ -6,12 +6,15 @@ import com.efgh.simplenetwork.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 @Service
 public class PostService {
     public Post addPost(String userHandle, Post post) {
-        User user = Network.getUser(userHandle);
-        if(user == null){
+        User user;
+        try {
+            user = Network.getUser(userHandle);
+        } catch (NoSuchElementException e) {
             user = Network.addUser(userHandle);
         }
         return user.addPost(post.getContent());

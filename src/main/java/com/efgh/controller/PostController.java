@@ -27,7 +27,7 @@ public class PostController {
      * @throws NoSuchElementException if the provided handle does not correspond to any user on the system
      */
     @RequestMapping(method = RequestMethod.POST)
-    public Post addPost(@PathVariable(value="userHandle") String userHandle, Post post){
+    public Post addPost(@PathVariable(value = "userHandle") String userHandle, @RequestBody Post post) {
         return postService.addPost(userHandle, post);
     }
 

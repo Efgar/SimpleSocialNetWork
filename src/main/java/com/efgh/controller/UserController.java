@@ -27,7 +27,7 @@ public class UserController {
      * @throws IllegalArgumentException if there is any inconsistency with the user object definition
      */
     @RequestMapping(method = RequestMethod.POST)
-    public User addUser(User user) {
+    public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
 
@@ -52,7 +52,7 @@ public class UserController {
      * @throws NoSuchElementException if the provided handle does not correspond to any user on the system
      */
     @RequestMapping(value = "/{userHandle}", method = RequestMethod.PUT)
-    public User updateUser(@PathVariable(value = "userHandle") String userHandle, User user) {
+    public User updateUser(@PathVariable(value = "userHandle") String userHandle, @RequestBody User user) {
         return userService.updateUser(userHandle, user);
     }
 
